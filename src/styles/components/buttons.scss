@@ -1,0 +1,30 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: rem(50);
+  background-color: transparent;
+  color: $color-black;
+  font-weight: $regular;
+  font-size: $font-sm;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  padding-right: rem(20);
+  padding-left: rem(20);
+
+  border: 1px solid transparent;
+  border-radius: rem(3);
+  &:hover,
+  &:focus {
+    background-color: darker($color-white);
+  }
+
+  &:disabled {
+    color: $color-gainsboro;
+    border: 1px solid $color-gainsboro;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+}
