@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import routes from './routes';
 
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import PageNotFound from '../pages/PageNotFound';
 
-const Routes = (): JSX.Element => {
+const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -18,7 +19,7 @@ const Routes = (): JSX.Element => {
           return <PublicRoute key={i} {...route} />;
         })}
 
-        {/* <Route component={Page404} /> */}
+        <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>
   );
