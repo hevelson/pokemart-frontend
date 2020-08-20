@@ -1,0 +1,13 @@
+header {
+	display: flex;
+	padding: rem(10) rem(238);
+	background-color: $color-white;
+	justify-content: space-between;
+	> .sign-in-link {
+		background-color: $color-gainsboro;
+		color: $color-white;
+		font-size: rem(20);
+		padding: rem(10);
+		border-radius: rem(5);
+	}
+}
