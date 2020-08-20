@@ -1,0 +1,38 @@
+.loading-page {
+  display: block;
+  width: 100%;
+  padding-top: rem(100);
+  padding-bottom: rem(100);
+
+  .container {
+    background-color: $color-white;
+    width: rem(360);
+
+    border-radius: rem(5);
+    padding: rem(30);
+    margin: 0 auto;
+    box-shadow: darken($color-baby-ponder, 5%) 0px 0px rem(15) rem(5);
+  }
+
+  .wrap-logo {
+    width: rem(200);
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+  }
+
+  .app-title {
+    font-size: $font-sm;
+    font-weight: $regular;
+    text-align: center;
+    margin-top: rem(10);
+  }
+
+  .overlay-loading {
+    color: $color-black;
+    font-size: $font-lg;
+    text-align: center;
+    margin-top: rem(10);
+  }
+}

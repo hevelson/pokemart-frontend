@@ -1,0 +1,78 @@
+$color-black: #1b2125;
+$color-white: #ffffff;
+
+$color-red: #f02b2d;
+
+$color-eerie-black: #1b2125;
+$color-onyx: #3c4145;
+$color-davys-gray: #525252;
+$color-state-gray: #69788c;
+$color-light-state-gray: #7a869a;
+$color-silver-chalice: #a9b1b2;
+$color-gray-x11: #bdbdbd;
+$color-light-gray: #cad2d9;
+$color-azure: #f6fdfe;
+$color-baby-ponder: #f8fafb;
+$color-cultured: #e4eaee;
+$color-alice-blue: #eef3f6;
+$color-misty-rose: #fde7e7;
+
+$color-lemon-yellow: #fffd9c;
+$color-middle-yellow: #ffeb3f;
+$color-usafa-blue: #00589f;
+
+//Layout colors
+$color-queen-blue: #346991;
+$color-gainsboro: #d8d8d8;
+$color-dark-eletric-blue: #5b6b82;
+$color-orange-red: #f36062;
+$color-blue-jeans: #3facff;
+$color-yellow-green: #7fc028;
+$color-maximum-purple: #793491;
+$color-rufous: #a02a10;
+$color-mountain-meadow: #18b692;
+
+$color-error: $color-orange-red;
+$color-success: $color-yellow-green;
+$color-warning: $color-middle-yellow;
+
+$color-installments: $color-queen-blue;
+$color-payments: $color-maximum-purple;
+$color-expenses: $color-rufous;
+$color-fees: $color-mountain-meadow;
+
+// Font Family
+$font-primary: 'Lato';
+$font-family: $font-primary, 'Helvetica', 'Arial', 'sans-serif';
+
+// Font Weights
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+$font-xxs: rem(10);
+$font-xs: rem(12);
+$font-sm: rem(14);
+$font-md: rem(16);
+$font-lg: rem(24);
+$font-xl: rem(36);
+$font-xxl: rem(40);
+
+$line-xs: rem(16);
+$line-sm: rem(18);
+$line-md: rem(22);
+$line-lg: rem(28);
+$line-xl: rem(40);
+$line-xxl: rem(46);
+
+$margin-sm: rem(15);
+$margin-md: rem(30);
+$margin-lg: rem(45);
+$margin-xl: rem(60);
+
+// Breakpoints
+$phone-sm: 576px;
+$tablet-md: 768px;
+$desktop-lg: 992px;
+$desktop-xl: 1200px;
+$desktop-xxl: 1600px;

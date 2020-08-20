@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Routes from './Routes';
+
+import logo from './assets/images/logo.svg';
+
+import './styles/app.scss';
+
+const App = () => {
+
+  const [appLoading, setAppLoading] = useState(true);
+
+  useEffect(() => {
+    if (appLoading) {
+      setTimeout(() => {
+        setAppLoading(false);
+      }, 3000);
+    }
+  }, [appLoading])
+
+  if (appLoading) {
+    return (
+      <main className="loading-page">
+        <div className="container">
+          <div className="initial-loading">
+            <div className="wrap-logo">
+              <img src={logo} alt="Logo Pokemarket" />
+            </div>
+            <h1 className="app-title">Pokemart - Venda de pokemons</h1>
+            <div className="overlay-loading">
+              <p>Carregando...</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  return <Routes />;
 }
 
 export default App;
