@@ -67,3 +67,40 @@ img {
 .mr-10 {
   margin-right: rem(10);
 }
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mobile-hidden {
+  display: none;
+}
+
+@media (min-width: $tablet-md) {
+  .container {
+    width: $container-md;
+  }
+  .mobile-hidden {
+    display: initial;
+  }
+}
+@media (min-width: $desktop-lg) {
+  .container {
+    width: $container-lg;
+  }
+  .desktop-hidden {
+    display: none;
+  }
+
+}
+@media (min-width: $desktop-xl) {
+  .container {
+    width: $container-xl;
+  }
+}
+@media (min-width: $desktop-xxl) {
+  .container {
+    width: $container-xxl;
+  }
+}

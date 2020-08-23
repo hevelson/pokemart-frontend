@@ -34,7 +34,17 @@
     border: 1px solid $color-charcoal;
     &:hover,
     &:focus {
-      background-color: darken($color-charcoal, 0.7);
+      background-color: darken($color-charcoal, 2);
+    }
+  }
+  
+  &.btn-royal-blue {
+    background-color: $color-royal-blue-dark;
+    color: $color-white;
+    border: 1px solid $color-royal-blue-dark;
+    &:hover,
+    &:focus {
+      background-color: darken($color-royal-blue-dark, 5);
     }
   }
 }
