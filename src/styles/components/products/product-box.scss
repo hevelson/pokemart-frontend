@@ -1,0 +1,34 @@
+.product-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darken($color-spanish-blue, 5);
+  border-radius: rem(3);
+  padding: rem(10);
+  picture {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  h2 {
+    font-size: $font-lg;
+    color: $color-sunglow;
+    text-align: left;
+  }
+  .info-box {
+    padding-top: rem(10);
+  }
+  .price {
+    font-size: $font-lg;
+    text-align: right;
+    color: $color-white;
+  }
+  .actions {
+    display: flex;
+    width: 100%;
+    padding-top: rem(10);
+    .btn {
+      width: 100%;
+    }
+  }
+}
