@@ -18,7 +18,7 @@
   border-radius: rem(3);
   &:hover,
   &:focus {
-    background-color: darker($color-white);
+    background-color: darken($color-white, 0.2);
   }
 
   &:disabled {
@@ -26,5 +26,15 @@
     border: 1px solid $color-gainsboro;
     opacity: 0.7;
     pointer-events: none;
+  }
+
+  &.btn-primary {
+    background-color: $color-charcoal;
+    color: $color-white;
+    border: 1px solid $color-charcoal;
+    &:hover,
+    &:focus {
+      background-color: darken($color-charcoal, 0.7);
+    }
   }
 }

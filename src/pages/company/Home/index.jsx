@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ButtonBasic from '../../../components/ButtonBasic';
+
 const HomePage = () => {
 
 	return(
@@ -15,7 +17,7 @@ const HomePage = () => {
 					<h2 class="title">Receba as nossas mais recentes novidades!</h2>
 					<form action="/" class="form-sign">
 						<input type="email" name="email" placeholder="Cadastre seu e-mail..." class="form-input"/>
-						<button class="btn">Cadastrar!</button>
+						<ButtonBasic>Cadastrar!</ButtonBasic>
 					</form>
 			</section>
 			<section class="short-description">
