@@ -1,18 +1,13 @@
 import React from 'react';
 
 import ButtonBasic from '../../../components/ButtonBasic';
+import NavHeader from '../../../components/NavHeader';
 
 const HomePage = () => {
 
 	return(
 		<main className="home-page">
-			<header>
-				<h1>Pokemart</h1>
-				<div className="right-elements">
-					<button>User</button>
-					<button>Cart</button>
-				</div>
-			</header>
+			<NavHeader />
 			<section class="hero-banner">
 					<h2 class="title">Receba as nossas mais recentes novidades!</h2>
 					<form action="/" class="form-sign">

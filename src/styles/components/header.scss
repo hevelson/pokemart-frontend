@@ -3,11 +3,25 @@ header {
 	padding: rem(10) rem(238);
 	background-color: $color-white;
 	justify-content: space-between;
-	> .sign-in-link {
-		background-color: $color-gainsboro;
-		color: $color-white;
-		font-size: rem(20);
-		padding: rem(10);
-		border-radius: rem(5);
+	&.nav-header {
+		.right-elements {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: rem(75);
+		}
+		.btn-user,
+		.btn-cart {
+			@extend %align-center;
+			background-color: transparent;
+			width: rem(36);
+			height: rem(36);
+			cursor: pointer;
+			border: 1px solid transparent;
+			&:hover,
+			&:active {
+				background-color: rgba($color-black, 0.1);
+			}
+		}
 	}
 }
