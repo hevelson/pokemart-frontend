@@ -2,6 +2,7 @@ import React from 'react';
 
 import ButtonBasic from '../../../components/ButtonBasic';
 import NavHeader from '../../../components/NavHeader';
+import FeaturedProducts from './FeaturedProducts';
 
 const HomePage = () => {
 
@@ -15,20 +16,7 @@ const HomePage = () => {
 						<ButtonBasic>Cadastrar!</ButtonBasic>
 					</form>
 			</section>
-			<section class="short-description">
-				<div class="description-box">
-					<h2 class="title">Fully Responsive</h2>
-					<p class="description">This theme will look great on any device, no matter the size!</p>
-				</div>
-				<div class="description-box">
-					<h2 class="title">Bootstrap 4 Ready</h2>
-					<p class="description">Featuring the latest build of the new Bootstrap 4 framework!</p>
-				</div>
-				<div class="description-box">
-					<h2 class="title">Easy to Use</h2>
-					<p class="description">ready to use with your own content, os customize the source files!</p>
-				</div>
-			</section>
+			<FeaturedProducts />
 		</main>
 	);
 }

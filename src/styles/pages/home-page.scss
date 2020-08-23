@@ -1,0 +1,12 @@
+.home-page {
+  section.featured-products {
+    background-color: $color-spanish-blue;
+    .products-list {
+      padding-top: rem(50);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);;
+      column-gap: rem(15);
+      row-gap: rem(15);
+    }
+  }
+}
