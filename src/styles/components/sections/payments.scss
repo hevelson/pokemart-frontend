@@ -1,0 +1,30 @@
+.section-payments {
+  padding-bottom: rem(50);
+  h2 {
+    font-size: $font-md;
+    margin-bottom: rem(20);
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+  }
+  .accepted-payments {
+    padding-top: rem(50);
+    ul {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      column-gap: rem(10);
+      row-gap: rem(10);
+      max-width: rem(340);
+    }
+  }
+  .security-certificates {
+    padding-top: rem(50);
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: rem(10);
+      row-gap: rem(10);
+    }
+  }
+}
