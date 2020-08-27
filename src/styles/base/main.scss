@@ -9,11 +9,11 @@
 
 html,
 body {
-  background: $color-gainsboro;
+  background: $color-spanish-blue;
   font-family: $font-family;
   font-size: 4.444444vw;
   font-weight: $regular;
-  color: $color-onyx;
+  color: $color-white;
   @media (min-width: $phone-sm) {
     font-size: 2.8vw;
   }
@@ -42,6 +42,12 @@ a {
 
 img {
   max-width: 100%;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
 }
 
 .mt-20 {

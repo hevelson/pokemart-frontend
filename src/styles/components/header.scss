@@ -3,6 +3,7 @@ header {
 	padding: rem(10) rem(238);
 	background-color: $color-white;
 	justify-content: space-between;
+	color: $color-onyx;
 	&.nav-header {
 		.right-elements {
 			display: flex;
