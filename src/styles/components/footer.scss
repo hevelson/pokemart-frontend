@@ -1,0 +1,9 @@
+.main-footer {
+  padding-top: rem(50);
+  .footer-copyright {
+    background-color: $color-royal-blue-dark;
+    color: $color-white;
+    font-size: $font-xs;
+    padding: rem(12) 0;
+  }
+}
