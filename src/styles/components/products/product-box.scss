@@ -11,9 +11,13 @@
     }
   }
   h2 {
-    font-size: $font-lg;
-    color: $color-sunglow;
-    text-align: left;
+    a {
+      font-size: $font-lg;
+      color: $color-sunglow;
+      text-align: left;
+      font-weight: $bold;
+      text-decoration: none;
+    }
   }
   .info-box {
     padding-top: rem(10);

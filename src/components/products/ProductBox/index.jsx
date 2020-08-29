@@ -1,17 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ButtonBasic from '../../ButtonBasic';
 
 const ProductBox = (props) => {
-  const { title, image, price } = props;
+  const { id, title, image, price } = props;
 
   const stringPrice = parseFloat(price).toLocaleString('pt-br', {minimumFractionDigits: 2});
 
   return (
     <div className="product-box">
       <picture>
-        <img src={image} alt={title} />
+        <Link to={`/product/${id}`}>
+          <img src={image} alt={title} />
+        </Link>
       </picture>
-      <h2>{title}</h2>
+      <h2>
+        <Link to={`/product/${id}`}>
+          {title}
+        </Link>
+      </h2>
       <div className="info-box">
         <div className="price">R$ {stringPrice}</div>
       </div>
