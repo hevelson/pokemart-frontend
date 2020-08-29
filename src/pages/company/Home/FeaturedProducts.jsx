@@ -28,6 +28,7 @@ const FeaturedProducts = () => {
     const { id, title, price } = product;
     return(
       <ProductBox
+        id={id}
         key={key} 
         title={title}
         image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
