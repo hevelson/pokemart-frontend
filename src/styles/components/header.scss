@@ -1,10 +1,15 @@
-header {
-	display: flex;
-	padding: rem(10) rem(238);
+.nav-header {
 	background-color: $color-white;
-	justify-content: space-between;
 	color: $color-onyx;
-	&.nav-header {
+	padding: rem(10) 0;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		h1 {
+			img {
+				height: rem(50);
+			}
+		}
 		.right-elements {
 			display: flex;
 			align-items: center;
