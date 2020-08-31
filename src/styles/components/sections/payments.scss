@@ -1,12 +1,8 @@
 .section-payments {
   padding-bottom: rem(50);
   h2 {
-    font-size: $font-md;
+    font-size: $font-lg;
     margin-bottom: rem(20);
-  }
-  .container {
-    display: grid;
-    grid-template-columns: 4fr 2fr;
   }
   .accepted-payments {
     padding-top: rem(50);
@@ -25,6 +21,19 @@
       grid-template-columns: repeat(3, 1fr);
       column-gap: rem(10);
       row-gap: rem(10);
+    }
+  }
+}
+
+
+@media (min-width: $desktop-lg) {
+  .section-payments {
+    h2 {
+      font-size: $font-md;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 4fr 2fr;
     }
   }
 }

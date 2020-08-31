@@ -1,4 +1,6 @@
 .nav-header {
+	display: flex;
+	align-items: center;
 	background-color: $color-white;
 	height: rem(80);
 	color: $color-onyx;
@@ -8,7 +10,7 @@
 		justify-content: space-between;
 		h1 {
 			img {
-				height: rem(50);
+				width: rem(180);
 			}
 		}
 		.right-elements {
@@ -31,4 +33,17 @@
 			}
 		}
 	}
+}
+
+@media (min-width: $desktop-lg) {
+	.nav-header {
+		.container {
+			h1 {
+				img {
+					width: auto;
+					height: rem(50);
+				}
+			}
+		}
+	}		
 }

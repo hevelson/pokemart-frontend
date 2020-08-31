@@ -1,7 +1,7 @@
 .product-detail {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
+  display: block;
   padding-top: rem(50);
+  padding-bottom: rem(20);
   border-bottom: 2px solid $color-charcoal;
   .product-image {
     width: 100%;
@@ -35,11 +35,31 @@
     }
     .product-price {
       display: flex;
+      flex-direction: column;
       justify-content: flex-end;
       align-items: flex-end;
+      margin-top: rem(20);
       .prices {
         font-size: $font-xl;
-        margin-right: rem(20);
+        margin-bottom: rem(20);
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-lg) {
+  .product-detail {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    .produt-description {
+      .product-price {
+        flex-direction: row;
+        margin-top: 0;
+        .prices {
+          font-size: $font-xl;
+          margin-right: rem(20);
+          margin-bottom: 0;
+        }
       }
     }
   }
