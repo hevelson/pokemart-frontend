@@ -1,12 +1,26 @@
 .home-page {
   section.featured-products {
     background-color: $color-spanish-blue;
+    padding: rem(20);
     .products-list {
       padding-top: rem(50);
       display: grid;
-      grid-template-columns: repeat(4, 1fr);;
-      column-gap: rem(15);
-      row-gap: rem(15);
+      grid-template-rows: 1fr;
+      row-gap: rem(20);
+    }
+  }
+}
+
+
+@media (min-width: $desktop-lg) {
+  .home-page {
+    section.featured-products {
+      .products-list {
+        padding-top: rem(50);
+        grid-template-columns: repeat(4, 1fr);;
+        column-gap: rem(15);
+        row-gap: rem(15);
+      }
     }
   }
 }
