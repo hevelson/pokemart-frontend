@@ -25,14 +25,14 @@ const FeaturedProducts = () => {
   }, [loading]);
 
   let productBoxes = products.map((product, key) => {
-    const { id, title, price } = product;
+    const { id, nome, preco } = product;
     return(
       <ProductBox
         id={id}
         key={key} 
-        title={title}
+        title={nome}
         image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        price={price}
+        price={preco}
       />
     );
   });

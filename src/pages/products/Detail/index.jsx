@@ -29,9 +29,14 @@ const ProductDetailPage = () => {
 	}, [loading, id]);
 	
 	const getStringPrice = (product) => {
-		const { price } = product;
-		const stringPrice = parseFloat(price).toLocaleString('pt-br', {minimumFractionDigits: 2});
+		const { preco } = product;
+		const stringPrice = parseFloat(preco).toLocaleString('pt-br', {minimumFractionDigits: 2});
 		return `R$ ${stringPrice}`;
+	}
+	const getStringWeight = (product) => {
+		const { peso } = product;
+		const stringWeight = parseFloat(peso).toLocaleString('pt-br', {minimumFractionDigits: 2});
+		return `${stringWeight} Kg`;
 	}
 
 	return(
@@ -43,13 +48,14 @@ const ProductDetailPage = () => {
 					(
 						<section className="product-detail">
 							<div className="product-image">
-								<img src={product.image} alt={product.title} />
+								<img src={product.link} alt={product.nome} />
 							</div>
 							<div className="produt-description">
-								<h1>{product.title} - cod.{product.id}</h1>
-								<p>{product.description}</p>
+								<h1>{product.nome} - cod.{product.id}</h1>
+								<p>{product.descricao}</p>
+								<p>{getStringWeight(product)}</p>
 								<ul className="tags">
-									{product.types.map((type, key) => {
+									{product.tipos.map((type, key) => {
 										return(
 											<li key={key}>{type}</li>
 										);
