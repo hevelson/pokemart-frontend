@@ -18,7 +18,6 @@ const Routes = () => {
 
           return <PublicRoute key={i} {...route} />;
         })}
-
         <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>
