@@ -1,11 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { setCartItem } from '../../../store/cart/actions';
 import ButtonBasic from '../../ButtonBasic';
 
 const ProductBox = (props) => {
+  const dispatch = useDispatch();
   const { id, title, image, price } = props;
 
   const stringPrice = parseFloat(price).toLocaleString('pt-br', {minimumFractionDigits: 2});
+  const addTocart = () => {
+    dispatch(setCartItem({
+      id,
+      qtd: 1
+    }));
+  }
 
   return (
     <div className="product-box">
@@ -23,7 +33,12 @@ const ProductBox = (props) => {
         <div className="price">R$ {stringPrice}</div>
       </div>
       <div className="actions">
-        <ButtonBasic className="btn-royal-blue">Comprar</ButtonBasic>
+        <ButtonBasic 
+          className="btn-royal-blue"
+          onClick={addTocart}
+        >
+          Comprar
+        </ButtonBasic>
       </div>
     </div>
   );
