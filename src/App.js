@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Routes from './Routes';
+import { loadLocalCart } from './store/cart/actions';
 
 import logo from './assets/images/logo.svg';
-
 import './styles/app.scss';
 
 const App = () => {
-
+  const dispatch = useDispatch();
   const [appLoading, setAppLoading] = useState(true);
 
   useEffect(() => {
     if (appLoading) {
+      dispatch(loadLocalCart());
       setTimeout(() => {
         setAppLoading(false);
       }, 500);
     }
-  }, [appLoading])
+  }, [appLoading, dispatch]);
 
   if (appLoading) {
     return (

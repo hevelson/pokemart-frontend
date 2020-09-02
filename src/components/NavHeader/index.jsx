@@ -16,7 +16,7 @@ const NavHeader = () => {
         </h1>
         <div className="right-elements">
           <button className="btn-user"><FaUser /></button>
-          <button className="btn-cart"><FaShoppingCart /></button>
+          <Link to="/cart" className="btn-cart"><FaShoppingCart /></Link>
         </div>
       </div>
     </header>
