@@ -13,7 +13,10 @@ const ProductBox = (props) => {
   const addTocart = () => {
     dispatch(setCartItem({
       id,
-      qtd: 1
+      qtd: 1,
+      title,
+      image,
+      price
     }));
   }
 
