@@ -5,7 +5,7 @@ export const setCartItem = (item) => {
   const itens = setLocalCartItem(item);
   return { type: CartActionTypes.UPDATE_CART_ITENS, payload: itens };
 };
-export const setRemoveCartItem = (itemKey) => {
+export const removeCartItem = (itemKey) => {
   const itens = removeLocalCartItem(itemKey);
   return { type: CartActionTypes.UPDATE_CART_ITENS, payload: itens };
 };

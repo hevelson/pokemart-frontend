@@ -8,7 +8,8 @@ export const setLocalCartItem = (item) => {
   }
 
   if (cart[`item_${item.id}`]) {
-    cart[`item_${item.id}`].qtd += item.qtd;
+    const { qtd } = cart[`item_${item.id}`];
+    cart[`item_${item.id}`].qtd = Math.max(qtd + item.qtd, 1);
   } else {
     cart[`item_${item.id}`] = item;
   }
@@ -18,7 +19,7 @@ export const setLocalCartItem = (item) => {
   return cart;
 }
 
-export const removeLocalCartItem = (item) => {
+export const removeLocalCartItem = (itemKey) => {
   let cart = localStorage.getItem('cart');
 
   if (!cart) {
@@ -26,15 +27,14 @@ export const removeLocalCartItem = (item) => {
   }
   
   cart = JSON.parse(cart);
-  if (!cart[`item_${item.id}`]) {
+
+  if (!cart[`item_${itemKey}`]) {
+    console.log({itemKey});
+    console.log(cart[`item_${itemKey}`]);
     return cart;
   }
 
-  cart[`item_${item.id}`].qtd -= item.qtd;
-
-  if (cart[`item_${item.id}`].qtd < 1) {
-    delete cart[`item_${item.id}`];
-  }
+  delete cart[`item_${itemKey}`];
 
   localStorage.setItem('cart', JSON.stringify(cart));
 
