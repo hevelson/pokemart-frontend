@@ -1,5 +1,4 @@
 export const CartActionTypes = {
-  SET_CART_ITEM: '@@cart/SET_CART_ITEM',
-  REMOVE_CART_ITEM: '@@cart/REMOVE_CART_ITEM',
+  UPDATE_CART_ITENS: '@@cart/UPDATE_CART_ITENS',
   LOAD_LOCAL_CART: '@@cart/LOAD_LOCAL_CART',
 }
