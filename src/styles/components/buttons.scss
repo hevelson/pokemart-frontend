@@ -28,6 +28,12 @@
     pointer-events: none;
   }
 
+  &.btn-small {
+    height: rem(30);
+    padding-right: rem(7);
+    padding-left: rem(7);
+  }
+
   &.btn-primary {
     background-color: $color-charcoal;
     color: $color-white;

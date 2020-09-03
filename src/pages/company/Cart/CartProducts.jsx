@@ -1,10 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 
-const CartProducts = () => {
+import { setCartItem, removeCartItem } from '../../../store/cart/actions';
+import { stringPrice } from '../../../lib/utils';
+import ButtonBasic from '../../../components/ButtonBasic';
 
+const CartProducts = () => {
+  const dispatch = useDispatch();
   const { itens } = useSelector(state => state.cart);
+
+  const updateQuantity = (product, qtd) => {
+    dispatch(setCartItem({ ...product, qtd }));
+  }
+
+  const removeItem = (id) => {
+    dispatch(removeCartItem(id));
+  }
 
   let productRows = [];
 
@@ -21,21 +33,36 @@ const CartProducts = () => {
           </div>
           <div className="actions">
             <div className="quantity">
-              <button type="button">
+              <ButtonBasic 
+                onClick={() => updateQuantity(itens[item], -1)}
+                className="btn-small btn-primary"
+              >
                 <FaMinus />
-              </button>
+              </ButtonBasic>
               <div className="current">{qtd}</div>
-              <button type="button">
+              <ButtonBasic 
+                onClick={() => updateQuantity(itens[item], +1)}
+                className="btn-small btn-primary"
+              >
                 <FaPlus />
-              </button>
+              </ButtonBasic>
             </div>
-            <button type="button">
+            <ButtonBasic 
+              onClick={() => removeItem(id)}
+              className="btn-small btn-primary"
+            >
               <FaTrashAlt />
-            </button>
+            </ButtonBasic>
           </div>
           <div className="prices">
-            <p>{price}</p>
-            <p>Sub-Total: {price * qtd}</p>
+            <p>
+              <strong>Valor:</strong>
+              <span>{`R$ ${stringPrice(price)}`}</span>
+            </p>
+            <p>
+              <strong>Sub-Total:</strong>
+              <span>{`R$ ${stringPrice(price * qtd)}`}</span>
+            </p>
           </div>
         </div>
       );
@@ -47,6 +74,11 @@ const CartProducts = () => {
       <div className="container">
         <div className="products-list">
           {productRows}
+        </div>
+        <div className="purchase-totals">
+          <p><span>Sub-total:</span><span>123,45</span></p>
+          <p><span>Frete:</span><span>12,34</span></p>
+          <p><span>Total:</span><span>135,79</span></p>
         </div>
       </div>
     </section>
