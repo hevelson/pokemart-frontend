@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import { setCartItem, removeCartItem } from '../../../store/cart/actions';
 import { stringPrice } from '../../../lib/utils';
@@ -76,9 +77,14 @@ const CartProducts = () => {
           {productRows}
         </div>
         <div className="purchase-totals">
-          <p><span>Sub-total:</span><span>123,45</span></p>
-          <p><span>Frete:</span><span>12,34</span></p>
-          <p><span>Total:</span><span>135,79</span></p>
+          <div className="values">
+            <p><span>Sub-total:</span><span>123,45</span></p>
+            <p><span>Frete:</span><span>12,34</span></p>
+            <p><span><strong>Total:</strong></span><span>135,79</span></p>
+          </div>
+        </div>
+        <div className="checkout-action">
+          <Link to="/checkout" className="btn btn-punpkin">Finalizar compra</Link>
         </div>
       </div>
     </section>

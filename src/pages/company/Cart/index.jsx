@@ -4,7 +4,7 @@ import NavHeader from '../../../components/NavHeader';
 import Footer from '../../../components/Footer';
 import CartProducts from './CartProducts';
 
-const HomePage = () => {
+const CartPage = () => {
 
 	return(
 		<main className="cart-page">
@@ -15,4 +15,4 @@ const HomePage = () => {
 	);
 }
 
-export default HomePage;
+export default CartPage;
