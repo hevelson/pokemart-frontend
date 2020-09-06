@@ -9,6 +9,7 @@
   font-weight: $regular;
   font-size: $font-sm;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
 
   padding-right: rem(20);
@@ -51,6 +52,16 @@
     &:hover,
     &:focus {
       background-color: darken($color-royal-blue-dark, 5);
+    }
+  }
+
+  &.btn-punpkin {
+    background-color: $color-punpkin;
+    color: $color-white;
+    border: 1px solid $color-punpkin;
+    &:hover,
+    &:focus {
+      background-color: darken($color-punpkin, 5);
     }
   }
 }
