@@ -1,4 +1,5 @@
 import Cart from '../../pages/company/Cart';
+import Checkout from '../../pages/company/Checkout';
 
 export default [
   {
@@ -7,5 +8,12 @@ export default [
     auth: false,
     groups: ['guest'],
     component: Cart,
+  },
+  {
+    path: '/checkout',
+    exact: true,
+    auth: false,
+    groups: ['guest'],
+    component: Checkout,
   },
 ];

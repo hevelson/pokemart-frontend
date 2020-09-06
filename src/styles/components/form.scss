@@ -1,0 +1,14 @@
+.form-group {
+  label {
+    display: block;
+    margin-bottom: rem(10);
+  }
+}
+.form-input {
+  display: block;
+  height: rem(50);
+  font-size: $font-md;
+  border-radius: rem(3);
+  padding: rem(10) rem(15);
+  margin-bottom: rem(10);
+}
