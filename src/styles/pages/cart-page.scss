@@ -45,9 +45,36 @@
       }
     }
     .purchase-totals {
+      position: relative;
       display: inline-block;
       width: rem(250);
       padding: rem(50) rem(20) 0;
+      .values {
+        position: sticky;
+        top: rem(30);
+      }
+      p {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        font-size: $font-lg;
+        line-height: $line-lg;
+        margin-bottom: rem(10);
+        span {
+          &:last-child {
+            text-align: right;
+          }
+        }
+      }
+    }
+    .checkout-action {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-top: rem(50);
+      .btn {
+        margin-left: auto;
+      }
     }
   }
 }
