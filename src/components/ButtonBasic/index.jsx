@@ -6,7 +6,7 @@ const ButtonBasic = (props) => {
   const _onClick = (event) => {
     if (onClick) {
       event.preventDefault();
-      onClick();
+      onClick(event);
     }
   };
 

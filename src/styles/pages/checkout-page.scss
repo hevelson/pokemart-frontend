@@ -11,10 +11,48 @@
         margin-bottom: rem(10);
       }
     }
+    .selected-address {
+      p {
+        font-size: $font-lg;
+        line-height: $line-lg;
+      }
+    }
     .payment {
       .select-payment {
         select {
           width: 100%;
+        }
+      }
+      .inline-inputs {
+        justify-content: space-between;
+        .form-group {
+          width: calc(50% - #{rem(5)});
+        }
+      }
+    }
+    .purchase-summary {
+      .values {
+        border-top: 1px solid $color-sunglow;
+        padding-top: rem(30);
+        div {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          font-size: $font-lg;
+          line-height: $line-lg;
+          margin-bottom: rem(10);
+          span {
+            &:last-child {
+              text-align: right;
+            }
+          }
+        }
+      }
+      .finish {
+        display: flex;
+        width: 100%;
+        margin-top: rem(30);
+        button {
+          margin-left: auto;
         }
       }
     }
@@ -34,6 +72,7 @@
         .price {
           width: rem(90);
           text-align: right;
+          margin-left: auto;
         }
       }
     }
@@ -46,8 +85,15 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       section {
-        &:not(:first-child) {
-          border-left: 1px solid $color-sunglow;
+        border-left: 1px solid $color-sunglow;
+        border-bottom: 0px;
+        &:last-child {
+          border-right: 1px solid $color-sunglow;
+        }
+      }
+      .purchase-summary {
+        .values {
+          border-top: 0px;
         }
       }
     }

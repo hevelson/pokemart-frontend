@@ -3,6 +3,9 @@
     display: block;
     margin-bottom: rem(10);
   }
+  .form-input {
+    width: 100%;
+  }
 }
 .form-input {
   display: block;
@@ -11,4 +14,13 @@
   border-radius: rem(3);
   padding: rem(10) rem(15);
   margin-bottom: rem(10);
+  border: 1px solid $color-onyx;
+  &.error {
+    border: 1px solid $color-red;
+  }
+}
+
+.inline-inputs {
+  display: flex;
+  flex-wrap: wrap;
 }
