@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Routes from './Routes';
 import { loadLocalCart } from './store/cart/actions';
+import { setAuthToken } from './store/user/actions';
 
 import logo from './assets/images/logo.svg';
 import './styles/app.scss';
@@ -14,9 +15,13 @@ const App = () => {
   useEffect(() => {
     if (appLoading) {
       dispatch(loadLocalCart());
-      setTimeout(() => {
-        setAppLoading(false);
-      }, 500);
+
+      const token = localStorage.getItem('token');
+      if (token) {
+        dispatch(setAuthToken(token));
+      }
+
+      setAppLoading(false);
     }
   }, [appLoading, dispatch]);
 

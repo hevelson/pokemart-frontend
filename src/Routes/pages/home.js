@@ -1,6 +1,7 @@
 import Home from '../../pages/company/Home';
 import Login from '../../pages/users/Login';
 import RegisterSuccess from '../../pages/users/RegisterSuccess';
+import Profile from '../../pages/users/Profile';
 
 export default [
   {
@@ -23,5 +24,12 @@ export default [
     auth: false,
     groups: ['guest'],
     component: RegisterSuccess,
+  },
+  {
+    path: '/profile',
+    exact: true,
+    auth: false,
+    groups: ['guest'],
+    component: Profile,
   },
 ];

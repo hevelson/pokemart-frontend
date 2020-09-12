@@ -17,6 +17,7 @@ const FormLogin = ({ goBack }) => {
     const { email, senha } = values;
     try {
       const token = await login({email, senha});
+      localStorage.setItem('token', token);
       dispatch(setAuthToken(token));
     } catch (error) {
       console.log({email, senha});
