@@ -1,23 +1,42 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { login } from '../../../services/users';
+import { setAuthToken } from '../../../store/user/actions';
 
 import ButtonBasic from '../../../components/ButtonBasic';
+import { useEffect } from 'react';
 
 const FormLogin = () => {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector(state => state.user);
+
+  const sendLogin = async (values) => {
+    const { email, senha } = values;
+    try {
+      const token = await login({email, senha});
+      dispatch(setAuthToken(token));
+    } catch (error) {
+      console.log({email, senha});
+    }
+  }
+
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
       email: '',
       senha: '',
     },
-    onSubmit: async values => {
-      login(values);
-    },
+    onSubmit: sendLogin,
   });
 
-  const login = (values) => {
-    const { email, senha } = values;
-    console.log({email, senha});
-  }
+  useEffect(() => {
+    if (isAuth) {
+      history.push("/cart");
+    }
+  }, [isAuth, history])
 
 	return(
     <section className="login">
