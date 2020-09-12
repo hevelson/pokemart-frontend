@@ -48,19 +48,12 @@ const ProductDetailPage = () => {
 					(
 						<section className="product-detail">
 							<div className="product-image">
-								<img src={product.link} alt={product.nome} />
+								<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${product.id}.png`} alt={product.nome} />
 							</div>
 							<div className="produt-description">
 								<h1>{product.nome} - cod.{product.id}</h1>
 								<p>{product.descricao}</p>
 								<p>{getStringWeight(product)}</p>
-								<ul className="tags">
-									{product.tipos.map((type, key) => {
-										return(
-											<li key={key}>{type}</li>
-										);
-									})}
-								</ul>
 								<div className="product-price">
 									<div className="prices">
 										{getStringPrice(product)}
