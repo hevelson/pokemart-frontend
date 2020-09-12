@@ -11,9 +11,9 @@ const FeaturedProducts = () => {
   useEffect(() => {
     const getList = async () => {
       try {
-        const products = await getProducts(1);
+        const products = await getProducts();
         setLoading(false);
-        setProducts(products.list);
+        setProducts(products);
       } catch (error) {
         setLoading(false);
         setProducts([]);

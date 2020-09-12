@@ -2,10 +2,10 @@ import http, { getErrorMessage } from '../lib/http';
 
 const { get } = http();
 
-export const getProducts = (page) => {
+export const getProducts = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await get(`/api/v1/products?page=${page}`);
+      const response = await get(`/produtos`);
 
       if (response.data.error || response.data.errors) {
         throw new Error(response.data);
@@ -21,7 +21,7 @@ export const getProducts = (page) => {
 export const getProduct = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await get(`/api/v1/product/${id}`);
+      const response = await get(`/produtos?id=${id}`);
 
       if (response.data.error || response.data.errors) {
         throw new Error(response.data);
