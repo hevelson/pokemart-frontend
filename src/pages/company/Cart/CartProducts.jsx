@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ import ButtonBasic from '../../../components/ButtonBasic';
 const CartProducts = () => {
   const dispatch = useDispatch();
   const { itens } = useSelector(state => state.cart);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   const updateQuantity = (product, qtd) => {
     dispatch(setCartItem({ ...product, qtd }));
@@ -18,6 +19,14 @@ const CartProducts = () => {
   const removeItem = (id) => {
     dispatch(removeCartItem(id));
   }
+
+  useEffect(() => {
+    let totalProducts = 0;
+    for(let key in itens) {
+      totalProducts += (itens[key].price * itens[key].qtd);
+    }
+    setTotalProducts(totalProducts);
+  }, [itens])
 
   let productRows = [];
 
@@ -78,9 +87,9 @@ const CartProducts = () => {
         </div>
         <div className="purchase-totals">
           <div className="values">
-            <p><span>Sub-total:</span><span>123,45</span></p>
-            <p><span>Frete:</span><span>12,34</span></p>
-            <p><span><strong>Total:</strong></span><span>135,79</span></p>
+            <p><span>Sub-total:</span><span>{stringPrice(totalProducts)}</span></p>
+            <p><span>Frete:</span><span>19,99</span></p>
+            <p><span><strong>Total:</strong></span><span>{stringPrice(totalProducts + 19.99)}</span></p>
           </div>
         </div>
         <div className="checkout-action">

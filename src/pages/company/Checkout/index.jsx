@@ -47,7 +47,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     let produtos = [];
-    for( let key in itens) {
+    for(let key in itens) {
       const item = itens[key];
       produtos.push({
         id: item.id,
@@ -238,7 +238,7 @@ const CheckoutPage = () => {
               </div>
               { paymentForm() }
             </section>
-            <PurchaseSummary postPrice={0} finish={handleSubmit} />
+            <PurchaseSummary postPrice={19.99} finish={handleSubmit} />
           </div>
         </form>
       </div>
