@@ -2,6 +2,7 @@ import Home from '../../pages/company/Home';
 import Login from '../../pages/users/Login';
 import RegisterSuccess from '../../pages/users/RegisterSuccess';
 import Profile from '../../pages/users/Profile';
+import OrderSuccess from '../../pages/company/OrderSuccess';
 
 export default [
   {
@@ -31,5 +32,12 @@ export default [
     auth: false,
     groups: ['guest'],
     component: Profile,
+  },
+  {
+    path: '/order-success',
+    exact: true,
+    auth: false,
+    groups: ['guest'],
+    component: OrderSuccess,
   },
 ];
