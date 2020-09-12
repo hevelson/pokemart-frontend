@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { login } from '../../../services/users';
-import { setAuthToken } from '../../../store/user/actions';
+import { setAuthToken, setUserInfo } from '../../../store/user/actions';
 
 import ButtonBasic from '../../../components/ButtonBasic';
 
@@ -16,9 +16,12 @@ const FormLogin = ({ goBack }) => {
   const sendLogin = async (values) => {
     const { email, senha } = values;
     try {
-      const token = await login({email, senha});
+      const loginResponse = await login({email, senha});
+      const { token, ...userInfo } = loginResponse;
       localStorage.setItem('token', token);
+      localStorage.setItem('userInfo', userInfo);
       dispatch(setAuthToken(token));
+      dispatch(setUserInfo(userInfo));
     } catch (error) {
       console.log({email, senha});
     }

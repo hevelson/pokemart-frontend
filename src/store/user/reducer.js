@@ -16,8 +16,16 @@ const reducer = (state = initialState, action) => {
     case UserActionTypes.SET_AUTH_TOKEN: {
       return { ...state, authToken: payload, isAuth: true };
     }
-    case UserActionTypes.REMOVE_AUTH_TOKEN: {
-      return { ...state, authToken: '', isAuth: false };
+    case UserActionTypes.USER_LOGOUT: {
+      return { 
+        ...state, 
+        isAuth: false,
+        authToken: '',
+        user: {
+          name: '',
+          address: {}
+        }
+      };
     }
     case UserActionTypes.SET_USER_INFO: {
       return { ...state, user: payload };

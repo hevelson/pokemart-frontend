@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Routes from './Routes';
 import { loadLocalCart } from './store/cart/actions';
-import { setAuthToken } from './store/user/actions';
+import { setAuthToken, setUserInfo } from './store/user/actions';
 
 import logo from './assets/images/logo.svg';
 import './styles/app.scss';
@@ -18,7 +18,9 @@ const App = () => {
 
       const token = localStorage.getItem('token');
       if (token) {
+        const userInfo = localStorage.getItem('userInfo');
         dispatch(setAuthToken(token));
+        dispatch(setUserInfo(userInfo));
       }
 
       setAppLoading(false);
