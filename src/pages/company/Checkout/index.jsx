@@ -1,5 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import paymentSchema from '../../../validators/paymentSchema';
 
@@ -8,6 +10,8 @@ import Footer from '../../../components/Footer';
 import PurchaseSummary from './PurchaseSummary';
 
 const CheckoutPage = () => {
+  const { isAuth } = useSelector(state => state.user);
+
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues: {
       paymentMethod: '',
@@ -84,6 +88,15 @@ const CheckoutPage = () => {
     }
 
     return <></>;
+  }
+
+  if (!isAuth) {
+    return <Redirect to={
+      {
+        pathname: "/login",
+        goBack: "checkout"
+      }
+    } />;
   }
 
 	return(

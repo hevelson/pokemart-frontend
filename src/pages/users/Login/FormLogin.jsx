@@ -8,7 +8,7 @@ import { setAuthToken } from '../../../store/user/actions';
 
 import ButtonBasic from '../../../components/ButtonBasic';
 
-const FormLogin = () => {
+const FormLogin = ({ goBack }) => {
   let history = useHistory();
   const dispatch = useDispatch();
   const { isAuth } = useSelector(state => state.user);
@@ -33,9 +33,13 @@ const FormLogin = () => {
 
   useEffect(() => {
     if (isAuth) {
-      history.push("/cart");
+      if (goBack) {
+        history.push(`/${goBack}`);
+      } else {
+        history.push("/cart");
+      }
     }
-  }, [isAuth, history])
+  }, [isAuth, history, goBack])
 
 	return(
     <section className="login">
