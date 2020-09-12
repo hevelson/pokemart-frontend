@@ -1,0 +1,15 @@
+.register-success-page {
+  .page-message {
+    padding-top: rem(50);
+    margin-bottom: rem(50);
+    h1 {
+      font-size: $font-xl;
+      margin-bottom: rem(20);
+    }
+    p {
+      font-size: $font-md;
+      line-height: $line-md;
+      margin-bottom: rem(5);
+    }
+  }
+}

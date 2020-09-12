@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { login } from '../../../services/users';
 import { setAuthToken } from '../../../store/user/actions';
 
 import ButtonBasic from '../../../components/ButtonBasic';
-import { useEffect } from 'react';
 
 const FormLogin = () => {
   let history = useHistory();
