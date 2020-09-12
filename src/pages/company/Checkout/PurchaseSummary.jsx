@@ -53,7 +53,7 @@ const PurchaseSummary = ({ postPrice, finish }) => {
         </div>
       </div>
       <div className="finish">
-        <ButtonBasic onClick={finish}>Finalizar compra</ButtonBasic>
+        <ButtonBasic onClick={finish} type="submit">Finalizar compra</ButtonBasic>
       </div>
     </section>
   )

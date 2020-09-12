@@ -19,7 +19,7 @@ const FormLogin = ({ goBack }) => {
       const loginResponse = await login({email, senha});
       const { token, ...userInfo } = loginResponse;
       localStorage.setItem('token', token);
-      localStorage.setItem('userInfo', userInfo);
+      localStorage.setItem('userInfo',JSON.stringify(userInfo));
       dispatch(setAuthToken(token));
       dispatch(setUserInfo(userInfo));
     } catch (error) {

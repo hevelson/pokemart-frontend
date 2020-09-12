@@ -1,6 +1,6 @@
 import http, { getErrorMessage } from '../lib/http';
 
-const { post } = http();
+const { post, get } = http();
 
 export const login = ({ email, senha }) => {
   return new Promise(async (resolve, reject) => {
@@ -37,4 +37,20 @@ export const register = (userData) => {
   });
 };
 
-export default { login, register };
+export const getAddress = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await get(`/usuarios/enderecos`);
+
+      if (response.data.error || response.data.errors) {
+        throw new Error(response.data);
+      }
+
+      resolve(response.data);
+    } catch (error) {
+      reject(getErrorMessage(error));
+    }
+  });
+};
+
+export default { login, register, getAddress };

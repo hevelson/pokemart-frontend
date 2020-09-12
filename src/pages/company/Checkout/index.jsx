@@ -1,32 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
+import { getAddress } from '../../../services/users';
+import { getPayments, newOrder } from '../../../services/payments';
 import paymentSchema from '../../../validators/paymentSchema';
 
 import NavHeader from '../../../components/NavHeader';
 import Footer from '../../../components/Footer';
 import PurchaseSummary from './PurchaseSummary';
+import { useEffect } from 'react';
 
 const CheckoutPage = () => {
+  let history = useHistory();
   const { isAuth } = useSelector(state => state.user);
+  const { itens } = useSelector(state => state.cart);
+  const [addressList, setAddressList] = useState([]);
+  const [paymentList, setPaymentList] = useState([]);
 
-  const { handleChange, handleSubmit, values, errors, touched } = useFormik({
+  const { handleChange, handleSubmit, values, errors, touched, setFieldValue } = useFormik({
     initialValues: {
-      paymentMethod: '',
-      cardName: '',
-      cardNumber: '',
-      cardExpiry: '',
-      cardCvc: '',
+      pagamento: '',
+      endereco: '',
+      produtos: []
     },
     validationSchema: paymentSchema,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async values => {
-      alert('Compra finalizada');
+      if (values.produtos && values.produtos.length) {
+        try {
+          const order = await newOrder(values);
+          if (order === "Sucesso") {
+            history.push("/order-success");
+          }
+          console.log(order);
+        } catch (error) {
+          alert('Ocorreu um erro ao processar a sua compra!');
+        }
+      } else {
+        alert('Você não tem produtos na sua compra');
+      }
     },
   });
+
+  useEffect(() => {
+    let produtos = [];
+    for( let key in itens) {
+      const item = itens[key];
+      produtos.push({
+        id: item.id,
+        nome: item.title,
+        preco: item.price,
+        qtdEstoque: item.qtd
+      });
+    }
+    setFieldValue('produtos', produtos);
+  }, [itens, setFieldValue])
+
+  useEffect(() => {
+    const getAddressList = async () => {
+      try {
+        const addressList = await getAddress();
+        setAddressList(addressList);
+      } catch (error) {
+        setAddressList([]);
+      }
+    }
+    const getPaymentList = async () => {
+      try {
+        const paymentsList = await getPayments();
+        setPaymentList(paymentsList);
+      } catch (error) {
+        setPaymentList([]);
+      }
+    }
+    getAddressList();
+    getPaymentList();
+  }, [isAuth])
 
   const paymentForm = () => {
 
@@ -99,6 +151,35 @@ const CheckoutPage = () => {
     } />;
   }
 
+  const renderAddress = (addressId, addressList) => {
+    if (addressId) {
+      const address = addressList.find(address => address.id === parseInt(addressId));
+      
+      if (address) {
+        const {
+          rua,
+          num,
+          bairro,
+          cidade,
+          estado,
+          cep
+        } = address;
+
+        return(
+          <>
+            <p className="street">{`${rua}, ${num}`}</p>
+            <p className="neighborhood">{bairro}</p>
+            <p className="city-state">{`${cidade}/${estado}`}</p>
+            <p className="post-code">{cep}</p>
+          </>
+        )
+
+      }
+    }
+
+    return <></>
+  }
+
 	return(
 		<main className="checkout-page">
 			<NavHeader />
@@ -107,26 +188,52 @@ const CheckoutPage = () => {
           <div className="checkout-columns">
             <section className="address">
               <h2>Endereço</h2>
+              <div className="form-group">
+                <label htmlFor="endereco">
+                  Endereço de entrega
+                  {errors.endereco && touched.endereco ? <span className="label-error">{errors.endereco}</span> : ''}
+                </label>
+                <select 
+                  name="endereco" 
+                  value={values.endereco}
+                  onChange={handleChange}
+                  className="form-input"
+                >
+                  <option value="">Selecione o endereço...</option>
+                  {
+                    addressList.map((address, key) => {
+                      return (
+                        <option key={key} value={address.id}>{address.descricao}</option>
+                      );
+                    })
+                  }
+                </select>
+              </div>
               <div className="selected-address">
-                <p className="street">Rua: Virgilio de Rezende, 390</p>
-                <p className="neighborhood">Centro</p>
-                <p className="city-state">Itapetininga/SP</p>
-                <p className="post-code">18200-500</p>
+                { renderAddress(values.endereco, addressList) }
               </div>
             </section>
             <section className="payment">
               <h2>Pagamento</h2>
               <div className="select-payment form-group">
-                <label htmlFor="paymentMethod">Forma de pagemento</label>
+                <label htmlFor="pagamento">
+                  Forma de pagemento
+                  {errors.pagamento && touched.pagamento ? <span className="label-error">{errors.pagamento}</span> : ''}
+                </label>
                 <select 
-                  name="paymentMethod" 
-                  value={values.paymentMethod}
+                  name="pagamento" 
+                  value={values.pagamento}
                   onChange={handleChange}
                   className="form-input"
                 >
-                  <option value="">Selecione</option>
-                  <option value="creditCard">Cartão de crédito</option>
-                  <option value="bankSlip">Boleto bancário</option>
+                  <option value="">Selecione...</option>
+                  {
+                    paymentList.map((payment, key) => {
+                      return(
+                        <option key={key} value={payment.id}>{payment.descricao}</option>
+                      );
+                    })
+                  }
                 </select>
               </div>
               { paymentForm() }
