@@ -1,0 +1,61 @@
+.login-page {
+  .login-signup {
+    section {
+      &.login,
+      &.signup {
+        padding-top: rem(50);
+      }
+      h2 {
+        margin-bottom: rem(10);
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-lg) {
+  .login-page {
+    .login-signup {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding-top: rem(50);
+      section {
+        &.login,
+        &.signup {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        &.login {
+          padding-right: rem(10);
+          border-right: 1px solid $color-charcoal;
+          .form-login {
+            display: flex;
+            flex-direction: column;
+            width: rem(300);
+            .btn-login {
+              display: inline-block;
+              margin-left: auto;
+            }
+          }
+        }
+        &.signup {
+          padding-left: rem(10);
+          border-left: 1px solid $color-charcoal;
+          .form-signup {
+            display: flex;
+            flex-wrap: wrap;
+            .form-group {
+              width: 50%;
+              padding: 0 rem(5);
+            }
+            .btn-signpup {
+              margin-top: auto;
+              margin-left: auto;
+              margin-bottom: rem(10);
+            }
+          }
+        }
+      }
+    }
+  }
+}
