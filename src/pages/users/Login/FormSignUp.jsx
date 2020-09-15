@@ -10,14 +10,23 @@ import ButtonBasic from '../../../components/ButtonBasic';
 const FormSignUp = () => {
   let history = useHistory();
   const sendRegister = async (values) => {
+    let postData = { ...values };
+
+    const birthdate = new Date(values.dataNascimento);
+    const dia  = birthdate.getDate().toString().padStart(2, '0');
+    const mes  = (birthdate.getMonth()+1).toString().padStart(2, '0');
+    const ano  = birthdate.getFullYear();
+    
+    postData.dataNascimento = `${dia}/${mes}/${ano}`;
+
     try {
-      const userInfo = await register(values);
+      const userInfo = await register(postData);
 
       if (userInfo.id) {
         history.push("/register-success");
       }
     } catch (error) {
-      console.log(values);
+      console.log(error);
     }
   }
 
