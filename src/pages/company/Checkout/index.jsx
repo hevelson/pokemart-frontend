@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 
 const CheckoutPage = () => {
   let history = useHistory();
-  const { isAuth } = useSelector(state => state.user);
+  const { isAuth, user } = useSelector(state => state.user);
   const { itens } = useSelector(state => state.cart);
   const [addressList, setAddressList] = useState([]);
   const [paymentList, setPaymentList] = useState([]);
@@ -91,6 +91,7 @@ const CheckoutPage = () => {
 
   const newAddress = async (addressData) => {
     addressData.cobranca = addressData.cobranca ? 1 : 0;
+    addressData.fkUsuarioId = user.id;
     try {
       const newAddress = await postAddress(addressData);
       setAddressList([
