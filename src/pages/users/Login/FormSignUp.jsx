@@ -21,10 +21,7 @@ const FormSignUp = () => {
 
     try {
       const userInfo = await register(postData);
-
-      if (userInfo.id) {
-        history.push("/register-success");
-      }
+      history.push("/register-success");
     } catch (error) {
       console.log(error);
     }
