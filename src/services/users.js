@@ -37,6 +37,22 @@ export const register = (userData) => {
   });
 };
 
+export const postAddress = (address) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await post(`/usuarios/enderecos`, address);
+
+      if (response.data.error || response.data.errors) {
+        throw new Error(response.data);
+      }
+
+      resolve(response.data);
+    } catch (error) {
+      reject(getErrorMessage(error));
+    }
+  });
+};
+
 export const getAddress = () => {
   return new Promise(async (resolve, reject) => {
     try {

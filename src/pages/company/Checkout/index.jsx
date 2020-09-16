@@ -3,13 +3,15 @@ import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 
-import { getAddress } from '../../../services/users';
+import { getAddress, postAddress } from '../../../services/users';
 import { getPayments, newOrder } from '../../../services/payments';
 import paymentSchema from '../../../validators/paymentSchema';
 
 import NavHeader from '../../../components/NavHeader';
 import Footer from '../../../components/Footer';
+import ButtonBasic from '../../../components/ButtonBasic';
 import PurchaseSummary from './PurchaseSummary';
+import AddressModal from './AddressModal';
 import { useEffect } from 'react';
 
 const CheckoutPage = () => {
@@ -18,6 +20,7 @@ const CheckoutPage = () => {
   const { itens } = useSelector(state => state.cart);
   const [addressList, setAddressList] = useState([]);
   const [paymentList, setPaymentList] = useState([]);
+  const [showAddressModal, setShowAddressModal] = useState(false);
 
   const { handleChange, handleSubmit, values, errors, touched, setFieldValue } = useFormik({
     initialValues: {
@@ -78,7 +81,20 @@ const CheckoutPage = () => {
     }
     getAddressList();
     getPaymentList();
-  }, [isAuth])
+  }, [isAuth]);
+
+  const newAddress = async (addressData) => {
+    try {
+      const newAddress = await postAddress(addressData);
+      setAddressList([
+        ...addressList,
+        newAddress
+      ]);
+      setShowAddressModal(false);
+    } catch (error) {
+      
+    }
+  }
 
   const paymentForm = () => {
 
@@ -184,6 +200,11 @@ const CheckoutPage = () => {
 		<main className="checkout-page">
 			<NavHeader />
       <div className="container">
+        <AddressModal 
+          modalIsOpen={showAddressModal} 
+          closeModal={() => setShowAddressModal(false)}
+          onSubmit={newAddress}
+        />
         <form name="form-register" onSubmit={handleSubmit}>
           <div className="checkout-columns">
             <section className="address">
@@ -208,6 +229,7 @@ const CheckoutPage = () => {
                     })
                   }
                 </select>
+                <ButtonBasic type="button" onClick={() => setShowAddressModal(true)}>Novo endereço</ButtonBasic>
               </div>
               <div className="selected-address">
                 { renderAddress(values.endereco, addressList) }

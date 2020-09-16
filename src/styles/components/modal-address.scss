@@ -1,0 +1,49 @@
+.modal-new-address {
+  width: rem(600);
+  height: calc(100vh - #{rem(130)});
+  background-color: $color-white;
+  color: $color-onyx;
+  overflow-y: scroll;
+  margin: rem(80) auto;
+  .container-address {
+    padding: rem(20);
+  }
+  .form-new-address {
+    display: flex;
+    flex-wrap: wrap;
+    .form-group {
+      margin-right: rem(10);
+    }
+    .rua {
+      width: rem(550);
+    }
+    .numero {
+      width: rem(100);
+    }
+    .complemento {
+      width: rem(120);
+    }
+    .cep {
+      width: rem(100);
+    }
+    .bairro {
+      width: rem(200);
+    }
+    .cidade {
+      width: rem(210);
+    }
+    .estado {
+      width: rem(200);
+    }
+    .descricao {
+      width: rem(300);
+    }
+    .cobranca {
+      width: rem(300);
+    }
+    .envio {
+      width: rem(500);
+      margin-top: rem(20);
+    }
+  }
+}

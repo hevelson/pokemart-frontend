@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import './index.css';
 
 import App from './App';
@@ -11,6 +12,7 @@ import configureStore from './store/configureStore';
 
 const initialState = window.INITIAL_REDUX_STATE;
 const store = configureStore(initialState);
+Modal.setAppElement('#root');
 
 ReactDOM.render(
   <React.StrictMode>
