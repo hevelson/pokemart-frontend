@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
+import { setCartItem } from '../../../store/cart/actions';
 
 import NavHeader from '../../../components/NavHeader';
 import Footer from '../../../components/Footer';
@@ -8,9 +11,32 @@ import ButtonBasic from '../../../components/ButtonBasic';
 import { getProduct } from '../../../services/products';
 
 const ProductDetailPage = () => {
+	const dispatch = useDispatch();
 	let { id } = useParams();
 	const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
+	const [showCartMessage, setShowCartMessage] = useState(false);
+	let messageTimeout = null;
+
+	const addTocart = () => {
+    dispatch(setCartItem({
+      id: product.id,
+      qtd: 1,
+      title: product.nome,
+      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${product.id}.png`,
+      price: product.preco
+    }));
+    setShowCartMessage(true);
+    messageTimeout = setTimeout(() => {
+      setShowCartMessage(false);
+    }, 2300);
+  }
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(messageTimeout);
+    }
+	}, [messageTimeout]);
 
 	useEffect(() => {
     const getList = async () => {
@@ -47,6 +73,9 @@ const ProductDetailPage = () => {
 					!loading && product !== null &&
 					(
 						<section className="product-detail">
+							<div className={`cart-message ${showCartMessage && 'show'}`}>
+								Produto adicionado ao carrinho
+							</div>
 							<div className="product-image">
 								<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${product.id}.png`} alt={product.nome} />
 							</div>
@@ -58,7 +87,7 @@ const ProductDetailPage = () => {
 									<div className="prices">
 										{getStringPrice(product)}
 									</div>
-									<ButtonBasic type="button" className="btn-royal-blue">Comprar</ButtonBasic>
+									<ButtonBasic type="button" onClick={addTocart} className="btn-royal-blue">Comprar</ButtonBasic>
 								</div>
 							</div>
 						</section>

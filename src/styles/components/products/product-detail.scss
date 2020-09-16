@@ -1,8 +1,30 @@
 .product-detail {
+  position: relative;
   display: block;
   padding-top: rem(50);
   padding-bottom: rem(20);
   border-bottom: 2px solid $color-charcoal;
+  .cart-message {
+    position: absolute;
+    top: rem(90);
+    right: rem(10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(300);
+    height: ren(200);
+    background-color: rgba($color-spanish-blue, 0.7);
+    padding: rem(20);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease-out;
+    z-index: 10;
+    &.show {
+      opacity: 1;
+      pointer-events: initial;
+      transition: opacity .3s ease-out;
+    }
+  }
   .product-image {
     width: 100%;
     img {
