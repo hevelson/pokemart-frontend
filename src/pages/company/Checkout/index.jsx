@@ -90,6 +90,7 @@ const CheckoutPage = () => {
   }, [isAuth]);
 
   const newAddress = async (addressData) => {
+    addressData.cobranca = addressData.cobranca ? 1 : 0;
     try {
       const newAddress = await postAddress(addressData);
       setAddressList([
