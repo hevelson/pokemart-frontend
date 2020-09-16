@@ -63,24 +63,30 @@ const CheckoutPage = () => {
   }, [itens, setFieldValue])
 
   useEffect(() => {
-    const getAddressList = async () => {
-      try {
-        const addressList = await getAddress();
-        setAddressList(addressList);
-      } catch (error) {
-        setAddressList([]);
+    if (isAuth) {
+      const getAddressList = async () => {
+        try {
+          const addressList = await getAddress();
+          if (typeof addressList === 'array') {
+            setAddressList(addressList);
+          } else {
+            setAddressList([]);
+          }
+        } catch (error) {
+          setAddressList([]);
+        }
       }
-    }
-    const getPaymentList = async () => {
-      try {
-        const paymentsList = await getPayments();
-        setPaymentList(paymentsList);
-      } catch (error) {
-        setPaymentList([]);
+      const getPaymentList = async () => {
+        try {
+          const paymentsList = await getPayments();
+          setPaymentList(paymentsList);
+        } catch (error) {
+          setPaymentList([]);
+        }
       }
+      getAddressList();
+      getPaymentList();
     }
-    getAddressList();
-    getPaymentList();
   }, [isAuth]);
 
   const newAddress = async (addressData) => {
