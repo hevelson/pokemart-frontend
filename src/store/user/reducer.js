@@ -28,7 +28,8 @@ const reducer = (state = initialState, action) => {
       };
     }
     case UserActionTypes.SET_USER_INFO: {
-      return { ...state, user: payload };
+      const user = JSON.parse(payload);
+      return { ...state, user };
     }
     default: {
       return state;
