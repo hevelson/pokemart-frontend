@@ -1,4 +1,5 @@
 .modal-new-address {
+  position: relative;
   width: rem(600);
   height: calc(100vh - #{rem(130)});
   background-color: $color-white;
@@ -7,6 +8,17 @@
   margin: rem(80) auto;
   .container-address {
     padding: rem(20);
+  }
+  .btn-close {
+    position: absolute;
+    top: rem(20);
+    right: rem(20);
+    width: rem(20);
+    height: rem(30);
+    background-color: transparent;
+    font-size: rem(16);
+    border: none;
+    cursor: pointer;
   }
   .form-new-address {
     display: flex;

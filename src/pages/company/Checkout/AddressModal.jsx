@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { useFormik } from 'formik';
+import { FaWindowClose } from 'react-icons/fa'
 
 import ButtonBasic from '../../../components/ButtonBasic';
 
@@ -29,6 +30,9 @@ const AddressModal = ({ modalIsOpen, closeModal, onSubmit }) => {
       className="modal-new-address"
     >
       <div className="container-address">
+        <button type="button" onClick={closeModal} className="btn-close">
+          <FaWindowClose />
+        </button>
         <h2>Cadastrar endereço</h2>
         <form onSubmit={handleSubmit} className="form-new-address">
           <div className="form-group rua">
