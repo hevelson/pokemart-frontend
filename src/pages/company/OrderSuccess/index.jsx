@@ -13,7 +13,7 @@ const OrderSuccessPage = () => {
 				<section className="page-message">
 					<h1>Compra finalizada</h1>
 					<p>Parabéns, sua compra foi finalizada com sucesso!</p>
-					<p>Você recebere o pedido dentro do prazo de envio.</p>
+					<p>Você receberá o pedido dentro do prazo de envio.</p>
 				</section>
 				<Link to="/" className="btn btn-primary">Voltar para Home</Link>
       </div>
