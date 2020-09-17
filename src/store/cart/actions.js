@@ -1,5 +1,5 @@
 import { CartActionTypes } from './types';
-import { setLocalCartItem, removeLocalCartItem, getLocalCart } from '../../lib/localStorage';
+import { setLocalCartItem, removeLocalCartItem, getLocalCart, clearLocalCart } from '../../lib/localStorage';
 
 export const setCartItem = (item) => {
   const itens = setLocalCartItem(item);
@@ -8,6 +8,10 @@ export const setCartItem = (item) => {
 export const removeCartItem = (itemKey) => {
   const itens = removeLocalCartItem(itemKey);
   return { type: CartActionTypes.UPDATE_CART_ITENS, payload: itens };
+};
+export const clearCart = () => {
+  clearLocalCart();
+  return { type: CartActionTypes.CLEAR_CART };
 };
 export const loadLocalCart = () => {
   const itens = getLocalCart();

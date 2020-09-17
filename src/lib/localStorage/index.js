@@ -29,8 +29,6 @@ export const removeLocalCartItem = (itemKey) => {
   cart = JSON.parse(cart);
 
   if (!cart[`item_${itemKey}`]) {
-    console.log({itemKey});
-    console.log(cart[`item_${itemKey}`]);
     return cart;
   }
 
@@ -39,6 +37,10 @@ export const removeLocalCartItem = (itemKey) => {
   localStorage.setItem('cart', JSON.stringify(cart));
 
   return cart;
+}
+
+export const clearLocalCart = () => {
+  localStorage.removeItem('cart');
 }
 
 export const getLocalCart = () => {

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 
+import { clearCart } from '../../../store/cart/actions';
 import { getAddress, postAddress } from '../../../services/users';
 import { getPayments, newOrder } from '../../../services/payments';
 import paymentSchema from '../../../validators/paymentSchema';
@@ -15,6 +16,7 @@ import AddressModal from './AddressModal';
 import { useEffect } from 'react';
 
 const CheckoutPage = () => {
+  const dispatch = useDispatch();
   let history = useHistory();
   const { isAuth, user } = useSelector(state => state.user);
   const { itens } = useSelector(state => state.cart);
@@ -36,6 +38,7 @@ const CheckoutPage = () => {
         try {
           const order = await newOrder(values);
           if (order === "Sucesso") {
+            dispatch(clearCart());
             history.push("/order-success");
           }
           console.log(order);
