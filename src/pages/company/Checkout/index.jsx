@@ -67,7 +67,7 @@ const CheckoutPage = () => {
       const getAddressList = async () => {
         try {
           const addressList = await getAddress();
-          if (typeof addressList === 'array') {
+          if (typeof addressList === 'object') {
             setAddressList(addressList);
           } else {
             setAddressList([]);

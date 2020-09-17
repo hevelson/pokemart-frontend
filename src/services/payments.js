@@ -22,7 +22,8 @@ export const newOrder = (checkoutData) => {
   return new Promise(async (resolve, reject) => {
     let orderData = {
       produtos: checkoutData.produtos,
-      fkFormaPagamento: checkoutData.pagamento
+      fkFormaPagamentoId: checkoutData.pagamento,
+      fkEnderecoId: checkoutData.endereco
     }
 
     try {
