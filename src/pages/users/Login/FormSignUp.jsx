@@ -20,7 +20,7 @@ const FormSignUp = () => {
     postData.dataNascimento = `${dia}/${mes}/${ano}`;
 
     try {
-      const userInfo = await register(postData);
+      await register(postData);
       history.push("/register-success");
     } catch (error) {
       console.log(error);
