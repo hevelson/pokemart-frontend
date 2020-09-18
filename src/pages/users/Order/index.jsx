@@ -68,8 +68,8 @@ const OrderPage = () => {
                 <th>Item</th>
                 <th>Nome</th>
                 <th>Valor</th>
-                <th>Peso</th>
                 <th>Quantidade</th>
+                <th>Valor Total</th>
               </tr>
             </thead>
             <tbody>
