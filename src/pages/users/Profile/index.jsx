@@ -44,16 +44,12 @@ const ProfilePage = () => {
   const renderOrderRow = (order, key) => {
     const { valor_total, data_compra } = order;
     const valor = stringPrice(valor_total);
-    const dataCompra = new Date(data_compra);
-    const dia = dataCompra.getDate().toString().padStart(2, '0');
-    const mes = (dataCompra.getMonth()+1).toString().padStart(2, '0');
-    const ano = dataCompra.getFullYear();
 
     return(
       <tr key={key}>
         <td className="">{(key + 1)}</td>
         <td>{`R$ ${valor}`}</td>
-        <td>{`${dia}/${mes}/${ano}`}</td>
+        <td>{data_compra}</td>
         <td>
           <Link 
             to={{ 

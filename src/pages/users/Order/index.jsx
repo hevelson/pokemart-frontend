@@ -15,11 +15,6 @@ const OrderPage = () => {
   }
 
   const valor = stringPrice(order.valor_total);
-  const dataCompra = new Date(order.data_compra);
-  const dia = dataCompra.getDate().toString().padStart(2, '0');
-  const mes = (dataCompra.getMonth()+1).toString().padStart(2, '0');
-  const ano = dataCompra.getFullYear();
-  const formatData = `${dia}/${mes}/${ano}`;
 
   const listProducts = (item, key) => {
     const {
@@ -61,7 +56,7 @@ const OrderPage = () => {
                 <td>{order.cliente_nome}</td>
                 <td>{order.endereco_entrega}</td>
                 <td>{`R$ ${valor}`}</td>
-                <td>{formatData}</td>
+                <td>{order.data_compra}</td>
               </tr>
             </tbody>
           </table>
