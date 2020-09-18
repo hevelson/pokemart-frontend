@@ -82,7 +82,7 @@ const ProductDetailPage = () => {
 							<div className="produt-description">
 								<h1>{product.nome} - cod.{product.id}</h1>
 								<p>{product.descricao}</p>
-								<p>{getStringWeight(product)}</p>
+								<p>Peso: {getStringWeight(product)}</p>
 								<div className="product-price">
 									<div className="prices">
 										{getStringPrice(product)}
