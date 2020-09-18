@@ -1,10 +1,17 @@
+.padding-header {
+	width: 100%;
+	height: rem(80);
+}
 .nav-header {
 	display: flex;
 	align-items: center;
 	background-color: $color-white;
 	height: rem(80);
+	width: 100%;
 	color: $color-onyx;
 	padding: rem(10) 0;
+	position: fixed;
+	z-index: 50;
 	.container {
 		display: flex;
 		justify-content: space-between;

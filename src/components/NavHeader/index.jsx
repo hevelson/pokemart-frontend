@@ -29,28 +29,31 @@ const NavHeader = () => {
   }
 
   return (  
-    <header className="nav-header">
-      <div className="container">
-        <h1>
-          <Link to="/">
-            <img src={Logo} alt="Pokemart" />
-          </Link>
-        </h1>
-        <div className="right-elements">
-          <div className="menu-wrap">
-            <button className="btn-user" onClick={openMenu}><FaUser /></button>
-            {
-              showUserMenu &&
-              <div className="user-menu">
-                <Link to="/profile" className="user-menu-item">Minha conta</Link>
-                <button className="user-menu-item" onClick={logout}>Sair</button>
-              </div>
-            }
+    <>
+      <header className="nav-header">
+        <div className="container">
+          <h1>
+            <Link to="/">
+              <img src={Logo} alt="Pokemart" />
+            </Link>
+          </h1>
+          <div className="right-elements">
+            <div className="menu-wrap">
+              <button className="btn-user" onClick={openMenu}><FaUser /></button>
+              {
+                showUserMenu &&
+                <div className="user-menu">
+                  <Link to="/profile" className="user-menu-item">Minha conta</Link>
+                  <button className="user-menu-item" onClick={logout}>Sair</button>
+                </div>
+              }
+            </div>
+            <Link to="/cart" className="btn-cart"><FaShoppingCart /></Link>
           </div>
-          <Link to="/cart" className="btn-cart"><FaShoppingCart /></Link>
         </div>
-      </div>
-    </header>
+      </header>
+      <div className="padding-header" />
+    </>
   );
 };
 
