@@ -19,19 +19,19 @@ const OrderPage = () => {
   const listProducts = (item, key) => {
     const {
       nome,
-      peso,
       valor,
       qtd
     } = item;
     const valorProduto = stringPrice(valor);
+    const valorTotal = stringPrice(parseFloat(valor) * parseInt(qtd));
 
     return(
       <tr key={key}>
         <td>{(key + 1)}</td>
         <td>{nome}</td>
         <td>{`R$ ${valorProduto}`}</td>
-        <td>{peso}</td>
         <td>{qtd}</td>
+        <td>{`R$ ${valorTotal}`}</td>
       </tr>
     );
   }
