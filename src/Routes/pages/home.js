@@ -3,41 +3,43 @@ import Login from '../../pages/users/Login';
 import RegisterSuccess from '../../pages/users/RegisterSuccess';
 import Profile from '../../pages/users/Profile';
 import OrderSuccess from '../../pages/company/OrderSuccess';
+import OrderDetail from '../../pages/users/Order';
 
 export default [
   {
     path: '/',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: Home,
   },
   {
     path: '/login',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: Login,
   },
   {
     path: '/register-success',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: RegisterSuccess,
   },
   {
     path: '/profile',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: Profile,
+  },
+  {
+    path: '/profile/order/detail',
+    exact: true,
+    auth: false,
+    component: OrderDetail,
   },
   {
     path: '/order-success',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: OrderSuccess,
   },
 ];

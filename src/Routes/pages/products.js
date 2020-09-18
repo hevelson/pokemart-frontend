@@ -5,7 +5,6 @@ export default [
     path: '/product/:id',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: Detail,
   },
 ];

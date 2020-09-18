@@ -1,0 +1,25 @@
+.orders-section {
+  padding-top: rem(50);
+  h1 {
+    margin-bottom: rem(50);
+  }
+  h2 {
+    margin-top: rem(50);
+    margin-bottom: rem(20);
+  }
+  .orders-table {
+    width: 100%;
+    border: 1px solid $color-white;
+    tr {
+      th, td {
+        text-align: left;
+        padding: rem(5);
+        border: 1px solid $color-white;
+        border-collapse: collapse;
+        a {
+          color: $color-white;
+        }
+      }
+    }
+  }
+}

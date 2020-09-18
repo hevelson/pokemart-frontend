@@ -59,7 +59,7 @@ const CheckoutPage = () => {
         id: item.id,
         nome: item.title,
         preco: item.price,
-        qtdEstoque: item.qtd
+        qtd: item.qtd
       });
     }
     setFieldValue('produtos', produtos);

@@ -6,14 +6,12 @@ export default [
     path: '/cart',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: Cart,
   },
   {
     path: '/checkout',
     exact: true,
     auth: false,
-    groups: ['guest'],
     component: Checkout,
   },
 ];

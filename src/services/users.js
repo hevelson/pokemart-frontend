@@ -69,4 +69,20 @@ export const getAddress = () => {
   });
 };
 
+export const getOders = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await get(`/vendas`);
+
+      if (response.data.error || response.data.errors) {
+        throw new Error(response.data);
+      }
+
+      resolve(response.data);
+    } catch (error) {
+      reject(getErrorMessage(error));
+    }
+  });
+};
+
 export default { login, register, getAddress };
