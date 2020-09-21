@@ -1,3 +1,4 @@
+// pokemart-frontend/src/pages/company/Checkout/index.jsx
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
@@ -51,9 +52,22 @@ const CheckoutPage = () => {
     },
   });
 
+  const getAddressList = async () => {
+    try {
+      const addressList = await getAddress();
+      if (typeof addressList === 'object') {
+        setAddressList(addressList);
+      } else {
+        setAddressList([]);
+      }
+    } catch (error) {
+      setAddressList([]);
+    }
+  }
+
   useEffect(() => {
     let produtos = [];
-    for(let key in itens) {
+    for (let key in itens) {
       const item = itens[key];
       produtos.push({
         id: item.id,
@@ -67,18 +81,6 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     if (isAuth) {
-      const getAddressList = async () => {
-        try {
-          const addressList = await getAddress();
-          if (typeof addressList === 'object') {
-            setAddressList(addressList);
-          } else {
-            setAddressList([]);
-          }
-        } catch (error) {
-          setAddressList([]);
-        }
-      }
       const getPaymentList = async () => {
         try {
           const paymentsList = await getPayments();
@@ -96,29 +98,26 @@ const CheckoutPage = () => {
     addressData.cobranca = addressData.cobranca ? 1 : 0;
     addressData.fkUsuarioId = user.id;
     try {
-      const newAddress = await postAddress(addressData);
-      setAddressList([
-        ...addressList,
-        newAddress
-      ]);
+      await postAddress(addressData);
+      await getAddressList();
       setShowAddressModal(false);
     } catch (error) {
-      
+
     }
   }
 
   const paymentForm = () => {
 
     if (values.paymentMethod === 'creditCard') {
-      return(
+      return (
         <div className="credit-card-form">
           <div className="form-group">
             <label htmlFor="cardName">Titular do cartão</label>
-            <input 
-              type="text" 
-              name="cardName" 
+            <input
+              type="text"
+              name="cardName"
               className={`form-input ${!errors.cardName ? '' : 'error'}`}
-              value={values.cardName} 
+              value={values.cardName}
               onChange={handleChange}
               error={errors.cardName && touched.cardName ? errors.cardName : ''}
               label="Nome"
@@ -126,11 +125,11 @@ const CheckoutPage = () => {
           </div>
           <div className="form-group">
             <label htmlFor="cardNumber">Número do cartão</label>
-            <input 
-              type="text" 
-              name="cardNumber" 
+            <input
+              type="text"
+              name="cardNumber"
               className={`form-input ${!errors.cardNumber ? '' : 'error'}`}
-              value={values.cardNumber} 
+              value={values.cardNumber}
               onChange={handleChange}
               error={errors.cardNumber && touched.cardNumber ? errors.cardNumber : ''}
               label="Nome"
@@ -139,11 +138,11 @@ const CheckoutPage = () => {
           <div className="inline-inputs">
             <div className="form-group">
               <label htmlFor="cardExpiry">Validade</label>
-              <input 
-                type="text" 
-                name="cardExpiry" 
+              <input
+                type="text"
+                name="cardExpiry"
                 className={`form-input ${!errors.cardExpiry ? '' : 'error'}`}
-                value={values.cardExpiry} 
+                value={values.cardExpiry}
                 onChange={handleChange}
                 error={errors.cardExpiry && touched.cardExpiry ? errors.cardExpiry : ''}
                 label="Nome"
@@ -151,11 +150,11 @@ const CheckoutPage = () => {
             </div>
             <div className="form-group">
               <label htmlFor="cardCvc">CVV</label>
-              <input 
-                type="text" 
-                name="cardCvc" 
+              <input
+                type="text"
+                name="cardCvc"
                 className={`form-input ${!errors.cardCvc ? '' : 'error'}`}
-                value={values.cardCvc} 
+                value={values.cardCvc}
                 onChange={handleChange}
                 error={errors.cardCvc && touched.cardCvc ? errors.cardCvc : ''}
                 label="Nome"
@@ -181,7 +180,7 @@ const CheckoutPage = () => {
   const renderAddress = (addressId, addressList) => {
     if (addressId) {
       const address = addressList.find(address => address.id === parseInt(addressId));
-      
+
       if (address) {
         const {
           rua,
@@ -192,7 +191,7 @@ const CheckoutPage = () => {
           cep
         } = address;
 
-        return(
+        return (
           <>
             <p className="street">{`${rua}, ${num}`}</p>
             <p className="neighborhood">{bairro}</p>
@@ -207,12 +206,12 @@ const CheckoutPage = () => {
     return <></>
   }
 
-	return(
-		<main className="checkout-page">
-			<NavHeader />
+  return (
+    <main className="checkout-page">
+      <NavHeader />
       <div className="container">
-        <AddressModal 
-          modalIsOpen={showAddressModal} 
+        <AddressModal
+          modalIsOpen={showAddressModal}
           closeModal={() => setShowAddressModal(false)}
           onSubmit={newAddress}
         />
@@ -225,8 +224,8 @@ const CheckoutPage = () => {
                   Endereço de entrega
                   {errors.endereco && touched.endereco ? <span className="label-error">{errors.endereco}</span> : ''}
                 </label>
-                <select 
-                  name="endereco" 
+                <select
+                  name="endereco"
                   value={values.endereco}
                   onChange={handleChange}
                   className="form-input"
@@ -243,7 +242,7 @@ const CheckoutPage = () => {
                 <ButtonBasic type="button" onClick={() => setShowAddressModal(true)}>Novo endereço</ButtonBasic>
               </div>
               <div className="selected-address">
-                { renderAddress(values.endereco, addressList) }
+                {renderAddress(values.endereco, addressList)}
               </div>
             </section>
             <section className="payment">
@@ -253,8 +252,8 @@ const CheckoutPage = () => {
                   Forma de pagemento
                   {errors.pagamento && touched.pagamento ? <span className="label-error">{errors.pagamento}</span> : ''}
                 </label>
-                <select 
-                  name="pagamento" 
+                <select
+                  name="pagamento"
                   value={values.pagamento}
                   onChange={handleChange}
                   className="form-input"
@@ -262,22 +261,22 @@ const CheckoutPage = () => {
                   <option value="">Selecione...</option>
                   {
                     paymentList.map((payment, key) => {
-                      return(
+                      return (
                         <option key={key} value={payment.id}>{payment.descricao}</option>
                       );
                     })
                   }
                 </select>
               </div>
-              { paymentForm() }
+              {paymentForm()}
             </section>
             <PurchaseSummary postPrice={19.99} finish={handleSubmit} />
           </div>
         </form>
       </div>
-			<Footer />
-		</main>
-	);
+      <Footer />
+    </main>
+  );
 }
 
 export default CheckoutPage;
